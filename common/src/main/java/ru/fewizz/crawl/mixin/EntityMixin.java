@@ -15,13 +15,6 @@ public abstract class EntityMixin {
 
 	@Shadow abstract public Pose getPose();
 
-	@ModifyReturnValue(method = "getBlockJumpFactor", at = @At("RETURN"))
-	float getBlockJumpFactor(float jumpFactor) {
-		if (this.getPose() == Crawl.Shared.CRAWLING) {
-			jumpFactor /= 2.0F;
-		}
-		return jumpFactor;
-	}
 
 	@ModifyReturnValue(method = "isVisuallyCrawling", at = @At("RETURN"))
 	private boolean isVisuallyCrawling(boolean original) {
